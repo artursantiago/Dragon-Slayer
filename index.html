@@ -11,6 +11,7 @@
 <body>
     <div id="app">
         <div class="panel scores">
+<<<<<<< HEAD
             <div class="characters">
                 <div class="knight">
                     <img src="characters/knight.gif" alt="kinght gif">
@@ -23,8 +24,19 @@
                     <p>Dragon</p>
                     <div class="life-box"></div>
                     <p class="life-percentage">100%</p>
+=======
+            <div class="knight">
+                <img src="characters/knight.gif" alt="kinght gif">
+                <h1>Knight</h1>
+                <div class="life-bar">
+                    <div class="life"
+                         :class="{danger: knightLife < 20}"
+                         :style="{width: knightLife + '%'}"></div>
+>>>>>>> add result and btns areas
                 </div>
+                <p>{{ knightLife }}%</p>
             </div>
+<<<<<<< HEAD
         </div>
 
         <div class="panel result"> Result </div>
@@ -34,6 +46,35 @@
             <button class="btn heal"> HEAL </button>
             <button class="btn desist"> DESIST </button>
         </div>
+=======
+
+            <div class="dragon">
+                <img src="characters/dragon.gif" alt="dragon gif">
+                <h1>Dragon</h1>
+                <div class="life-bar">
+                    <div class="life"
+                         :class="{danger: dragonLife < 20}"
+                         :style="{width: dragonLife + '%'}"></div>
+                </div>
+                <p>{{ dragonLife }}%</p>
+            </div>
+            
+        </div>
+        <div v-if="hasResult" class="panel result"> 
+            <div v-if="dragonLife == 0" class="win"> Congratulations! You beat the dragon!</div>
+            <div v-if="knightLife == 0" class="lose"> Sorry! You lost your head!</div>
+        </div>
+        <div class="panel buttons">
+            <template v-if="running">
+                <button class="btn attack">Attack</button>
+                <button class="btn special-attack">Special Attack</button>
+                <button class="btn heal">Heal</button>
+                <button class="btn give-up">Give Up</button>
+            </template>
+            <button v-else class="btn new-game">New Game</button>
+        </div>
+
+>>>>>>> add result and btns areas
         <div class="panel logs"> Logs </div>
     </div>
     <script src="app.js"></script>
