@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Monster Slayer</title>
+    <title>Dragon Slayer</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/vue"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600&display=swap" rel="stylesheet">
@@ -11,20 +11,6 @@
 <body>
     <div id="app">
         <div class="panel scores">
-<<<<<<< HEAD
-            <div class="characters">
-                <div class="knight">
-                    <img src="characters/knight.gif" alt="kinght gif">
-                    <p>Knight</p>
-                    <div class="life-box"></div>
-                    <p class="life-percentage">100%</p>
-                </div>
-                <div class="dragon">
-                    <img src="characters/dragon.gif" alt="dragon gif">
-                    <p>Dragon</p>
-                    <div class="life-box"></div>
-                    <p class="life-percentage">100%</p>
-=======
             <div class="knight">
                 <img src="characters/knight.gif" alt="kinght gif">
                 <h1>Knight</h1>
@@ -32,21 +18,9 @@
                     <div class="life"
                          :class="{danger: knightLife < 20}"
                          :style="{width: knightLife + '%'}"></div>
->>>>>>> add result and btns areas
                 </div>
                 <p>{{ knightLife }}%</p>
             </div>
-<<<<<<< HEAD
-        </div>
-
-        <div class="panel result"> Result </div>
-        <div class="panel buttons"> 
-            <button class="btn attack"> ATTACK </button>
-            <button class="btn special-attack"> SPECIAK ATTACK</button>
-            <button class="btn heal"> HEAL </button>
-            <button class="btn desist"> DESIST </button>
-        </div>
-=======
 
             <div class="dragon">
                 <img src="characters/dragon.gif" alt="dragon gif">
@@ -66,16 +40,26 @@
         </div>
         <div class="panel buttons">
             <template v-if="running">
-                <button class="btn attack">Attack</button>
-                <button class="btn special-attack">Special Attack</button>
-                <button class="btn heal">Heal</button>
-                <button class="btn give-up">Give Up</button>
+                <button class="btn attack"
+                        @click="attack(false)">Attack</button>
+                <button class="btn special-attack"
+                        @click="attack(true)">Special Attack</button>
+                <button class="btn heal"
+                        @click="healAndHurt">Heal</button>
+                <button class="btn give-up"
+                        @click="running = false">Give Up</button>
             </template>
-            <button v-else class="btn new-game">New Game</button>
+            <button v-else class="btn new-game"
+                    @click="startGame">New Game</button>
         </div>
 
->>>>>>> add result and btns areas
-        <div class="panel logs"> Logs </div>
+        <div v-if="logs.length" class="panel logs">
+            <ul>
+                <li v-for="log in logs" 
+                    :class="log.cls"
+                    class="log">{{ log.text }}</li>
+            </ul>
+        </div>
     </div>
     <script src="app.js"></script>
 </body>
